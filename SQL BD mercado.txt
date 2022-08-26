@@ -1,0 +1,39 @@
+//criar o BD
+CREATE DATABASE Mercados
+
+//Usar o BD
+USE Mercados
+
+//Criar tabela
+CREATE TABLE Mercado1(
+ ID SMALLINT PRIMARY KEY,
+ Tipo VARCHAR (50) NOT NULL,
+ Nome VARCHAR(50) NOT NULL,
+ Preco DECIMAL(10,2),
+);
+
+//Inserir valores
+INSERT INTO Mercado1
+VALUES 
+(001, 'Leite', 'Parmalat', 7.50),
+(002, 'Leite', 'Piracanjuba', 7.39),
+(003, 'Leite', 'Ninho', 7.99),
+(004, 'Arroz', 'urbano', 6.29),
+(005, 'Arroz', 'Carrefour', 4.39);
+
+//Selecionar dados com base em uma caracteristica
+SELECT nome, preco FROM Mercado1
+WHERE Tipo = 'Leite';
+
+//Selecionar dados das 2 tabelas
+SELECT a.Nome, a.preco, b.Nome, b.preco
+FROM Mercado1 as a
+INNER JOIN Mercado2 as b
+ON a.nome = b.nome;
+
+//Selecionar dados onde uma caracteristica em comum
+SELECT a.Nome, a.preco, b.Nome, b.preco
+FROM Mercado1 as a
+INNER JOIN Mercado2 as b
+ON a.nome = b.nome
+where a.tipo = 'leite';
